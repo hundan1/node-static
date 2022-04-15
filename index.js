@@ -16,6 +16,7 @@ app.listen(conf.port, conf.ip, () => {
     console.log("app is run at \t\t\t" + url);
     console.log("you can try load file:\t\t" + url + "/test.txt");
     console.log("you can try request[get]:\t" + url + "/api/test?a=1&b=2");
+    console.log("you can try request[post]:\t" + url + "/api/test/add", "data: {\"c\": 3}");
 });
 
 /**

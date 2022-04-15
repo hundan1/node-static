@@ -1,0 +1,5 @@
+20200416
+    public/目录下加 games文件夹，放游戏远程热更包。命名格式 games/gamesname/版本号/ 如:games/tests/1.0.0/
+    config.js 文件更改 动态调整热更包url 方法
+
+20200415 初始化git
