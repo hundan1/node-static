@@ -1,0 +1,51 @@
+[
+  1,
+  [
+    "bbJeTqeOhMhLsqK2vKAwzP"
+  ],
+  [
+    "_textureSetter"
+  ],
+  [
+    "cc.SpriteFrame"
+  ],
+  0,
+  [
+    {
+      "name": "bg_jinbishu",
+      "rect": [
+        0,
+        0,
+        40,
+        30
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "originalSize": [
+        40,
+        30
+      ],
+      "capInsets": [
+        19,
+        0,
+        15,
+        0
+      ]
+    }
+  ],
+  [
+    0
+  ],
+  0,
+  [
+    0
+  ],
+  [
+    0
+  ],
+  [
+    0
+  ]
+]

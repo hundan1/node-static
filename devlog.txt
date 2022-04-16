@@ -1,5 +1,9 @@
-20200416
+20220416
+    动态调整manifest时，可校验上一次ip和port,也可不校验强制更改(config.forceAdjust) 
+    添加npm指令 dev ,设置忽略列表，防止动态写入文件致使nodemon一直重新启动 https://nibes.cn/blog/27780
+
+20220415
     public/目录下加 games文件夹，放游戏远程热更包。命名格式 games/gamesname/版本号/ 如:games/tests/1.0.0/
     config.js 文件更改 动态调整热更包url 方法
 
-20200415 初始化git
+20220414 初始化git

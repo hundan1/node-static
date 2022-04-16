@@ -11,12 +11,13 @@ const conf = require("./config");
 // app.listen(5151, "172.22.91.1", () => {
 //   console.log('app is runing');
 // });
+const urlStr = "http://" + conf._ip + ":" + conf.port;
 app.listen(conf.port, conf.ip, () => {
-    let url = "http://" + conf._ip + ":" + conf.port;
-    console.log("app is run at \t\t\t" + url);
-    console.log("you can try load file:\t\t" + url + "/test.txt");
-    console.log("you can try request[get]:\t" + url + "/api/test?a=1&b=2");
-    console.log("you can try request[post]:\t" + url + "/api/test/add", "data: {\"c\": 3}");
+    // let url = "http://" + conf._ip + ":" + conf.port;
+    console.log("app is run at \t\t\t" + urlStr);
+    console.log("you can try load file:\t\t" + urlStr + "/test.txt");
+    console.log("you can try request[get]:\t" + urlStr + "/api/test?a=1&b=2");
+    console.log("you can try request[post]:\t" + urlStr + "/api/test/add", "data: {\"c\": 3}");
 });
 
 /**
@@ -90,9 +91,20 @@ app.all('*', (req, res, next) => {
 });
  */
 
-app.use('/', (res, req, next) => {
+let lastReqTime = Date.now();
+app.use('/', (req, res, next) => {
     visitNum++;
-    console.log('有人来了,当前访问次数:', visitNum);
+    // console.log('有人来了,当前访问次数:', visitNum);
+    // let url = "http://" + conf._ip + ":" + conf.port;
+    let now = Date.now();
+    let delta = now - lastReqTime;
+    lastReqTime = now;
+    // console.log(delta);
+    if (delta > 10000) {
+        console.log("\n------------split line---------------");// 10s分隔线
+    }
+
+    console.log(visitNum, urlStr, req.url);
     next();
 });
 

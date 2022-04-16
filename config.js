@@ -9,7 +9,17 @@ let addrReg = /^((http|https):\/\/(localhost|((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]
 
 let adjustPaths = [
     "./public/remote-assets/",
-    "./public/games/tests/1.0.0/","./public/games/tests/1.0.1/","./public/games/tests/1.0.2/","./public/games/tests/1.1.0/","./public/games/tests/1.1.1/","./public/games/tests/1.1.2/"
+    // 测试基础版
+    "./public/games/tests/1.0.0/", "./public/games/tests/1.0.1/", "./public/games/tests/1.0.2/",
+    "./public/games/tests/1.1.0/", "./public/games/tests/1.1.1/", "./public/games/tests/1.1.2/",
+    // 剔除无用模块
+    "./public/games/tests/1.2.0/",
+
+    // 勾选调试模式(1.3.2 修复帧报错)
+    "./public/games/tests/1.3.0/","./public/games/tests/1.3.1/","./public/games/tests/1.3.2/",
+
+    // 不勾选调试模式, 修复 news Label真机为null帧报错 屏闪
+    "./public/games/tests/1.4.0/","./public/games/tests/1.4.1/"
 ];
 
 // 0-255
@@ -42,6 +52,7 @@ let config = {
     staticPath: "./public",// 根目录
     // _ip: ipAddress || "localhost",// 终端提示文字用
     _ip: "localhost",// 终端提示文字用
+    forceAdjust: false,// 强制修改manifest，不比对上一次ip+port
 };
 
 function autoAdjustMnfst(dir, ip) {
@@ -119,17 +130,100 @@ function _autoAdjustMnfst(ip) {
     }
 }
 
+function checkIPSame(ipAddr) {
+    let result = {
+        isSame: false,
+    };
+    var path = "./records/config.json";//记录上一次config信息
+    var port = config.port;
+    var addr = ipAddr + ":" + port;
+
+    var res1 = fs.readFileSync(path, { encoding: "utf-8" });
+    if (res1) {
+        var cnt = JSON.parse(res1);
+        if (addr === cnt.lastAddress) {
+            console.log("ip&port未变,无需修改!");
+            result.isSame = true;
+        } else {
+            result.isSame = false;
+            cnt.lastIp = ipAddr;
+            cnt.lastPort = port;
+            cnt.lastAddress = addr;
+            cnt = JSON.stringify(cnt);
+            result.newCnt = cnt;
+
+            console.log("ip&port变更,开始修改manifest文件!");
+            // cb(cnt);
+        }
+    } else {
+        console.log("校验ip&port出错:读取文件异常！！！");
+        result.isSame = false;
+        result.newCnt = JSON.stringify({
+            "lastIp": ipAddr,
+            "lastPort": port,
+            "lastAddress": addr
+        });
+    }
+    return result;
+}
+
+function changeRecCnf(newCnt) {
+    var path = "./records/config.json";//记录上一次config信息
+    var rv = fs.writeFileSync(path, newCnt, { encoding: "utf-8" });
+    console.log(`修改${path}完成!`);
+}
+
 let ipAddress = getIpAddress();
 if (ipAddress) {
     // autoAdjustMnfst(ipAddress);
-    adjustPaths.forEach(function (dir) {
-        autoAdjustMnfst(dir, ipAddress);
-    });
-    console.log("\n");
+
+    var newCnt = "";
+    if (config.forceAdjust) {
+        console.log("强制修改manifest,不比对上一次ip和port");
+        // var path = "./records/config.json";//记录上一次config信息
+        // var res1 = fs.readFileSync(path, { encoding: "utf-8" });
+        // if(res1){
+        //     let cnt = JSON.parse(res1);
+        //     let port = config.port;
+        //     let addr = ipAddress + ":" + port;
+        //     cnt.lastIp = ipAddress;
+        //     cnt.lastPort = port;
+        //     cnt.lastAddress = addr;
+        //     newCnt = JSON.stringify(cnt);
+        // }else{
+        //     console.log(`读取文件${path}异常！！！`);
+        // }
+
+        // 没必要读取了，直接强制赋值
+        newCnt = JSON.stringify({
+            "lastIp": ipAddress,
+            "lastPort": config.port,
+            "lastAddress": ipAddress + ":" + config.port
+        });
+
+    } else {
+        var result = checkIPSame(ipAddress);
+        if(!result.isSame){
+            newCnt = result.newCnt;
+        }
+    }
+
+    if (newCnt) {
+        adjustPaths.forEach(function (dir) {
+            autoAdjustMnfst(dir, ipAddress);
+        });
+        console.log("修改manifest文件结束");
+        changeRecCnf(newCnt);
+    }
+
 
     config._ip = ipAddress;
+
+    console.log("\n");
     console.log("ipv4: " + ipAddress);
 } else {
+
+    console.log("\n");
     console.log("Error:", "查询本机ipv4失败!!!");
 }
 // console.error(new Error("查询本机ipv4失败"));// 打印太多了
