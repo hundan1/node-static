@@ -5,10 +5,12 @@ const fs = require("fs");
  * 
  * 获取当前机器的ip地址
  */
-let addrReg = /^((http|https):\/\/(localhost|((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))):(\d|[1-9]\d|[1-9]\d\d|[1-9]\d\d\d|[1-5]\d\d\d\d|6[0-4]\d\d\d|65[0-4]\d\d|655[0-2]\d|6553[0-5])\/)/;
+
+
 
 let adjustPaths = [
     "./public/remote-assets/",
+
     // 测试基础版
     "./public/games/tests/1.0.0/", "./public/games/tests/1.0.1/", "./public/games/tests/1.0.2/",
     "./public/games/tests/1.1.0/", "./public/games/tests/1.1.1/", "./public/games/tests/1.1.2/",
@@ -19,13 +21,18 @@ let adjustPaths = [
     "./public/games/tests/1.3.0/","./public/games/tests/1.3.1/","./public/games/tests/1.3.2/",
 
     // 不勾选调试模式, 修复 news Label真机为null帧报错 屏闪
-    "./public/games/tests/1.4.0/","./public/games/tests/1.4.1/"
-];
+    "./public/games/tests/1.4.0/","./public/games/tests/1.4.1/",
+    // 动态热更、初始自动检测更新、可版本回退、大版本安装包下载
+    "./public/games/tests/1.4.2/","./public/games/tests/1.4.3/",
+    // 启用Md5 Cache 现在 远程资源时assets、src、main.js、project.manifest、version.manifest !!! 2.0.0我忘记放main.js 没法降级到它
+    "./public/games/tests/2.0.0/","./public/games/tests/2.0.1/",
+    // 使用远程AB
+    "./public/games/tests/2.0.2/","./public/games/tests/2.0.3/",
 
-// 0-255
-// 0-9 10-99 100-199 200-249 250-255
-// 0-65535
-// 0-9 10-99 100-999 1000-9999 10000-59999 60000-64999 65000-65499 65500-65529 65530-65535
+    // 亮亮热更资源
+    "./public/games/ll/1.1.5/","./public/games/ll/1.1.2/"
+    // ,"./public/games/ll/2.0.1/"
+];
 
 function getIpAddress() {
     var ifaces = os.networkInterfaces();
@@ -69,9 +76,9 @@ function autoAdjustMnfst(dir, ip) {
     if (res1) {
         // console.log(res1);
         res1 = JSON.parse(res1);
-        res1.packageUrl = res1.packageUrl.replace(addrReg, url);
-        res1.remoteManifestUrl = res1.remoteManifestUrl.replace(addrReg, url);
-        res1.remoteVersionUrl = res1.remoteVersionUrl.replace(addrReg, url);
+        res1.packageUrl = res1.packageUrl.replace($Regexs.netAddr, url);
+        res1.remoteManifestUrl = res1.remoteManifestUrl.replace($Regexs.netAddr, url);
+        res1.remoteVersionUrl = res1.remoteVersionUrl.replace($Regexs.netAddr, url);
 
         res1 = JSON.stringify(res1);
 
@@ -84,9 +91,9 @@ function autoAdjustMnfst(dir, ip) {
     if (res2) {
         // console.log(res2);
         res2 = JSON.parse(res2);
-        res2.packageUrl = res2.packageUrl.replace(addrReg, url);
-        res2.remoteManifestUrl = res2.remoteManifestUrl.replace(addrReg, url);
-        res2.remoteVersionUrl = res2.remoteVersionUrl.replace(addrReg, url);
+        res2.packageUrl = res2.packageUrl.replace($Regexs.netAddr, url);
+        res2.remoteManifestUrl = res2.remoteManifestUrl.replace($Regexs.netAddr, url);
+        res2.remoteVersionUrl = res2.remoteVersionUrl.replace($Regexs.netAddr, url);
         res2 = JSON.stringify(res2);
 
         var rv = fs.writeFileSync(path2, res2, { encoding: "utf-8" });
@@ -227,6 +234,9 @@ if (ipAddress) {
     console.log("Error:", "查询本机ipv4失败!!!");
 }
 // console.error(new Error("查询本机ipv4失败"));// 打印太多了
+
+// config.url = "http://" + config._ip + ":" + config.port + "/";
+config.url = "http://" + config._ip + ":" + config.port;
 
 
 module.exports = config;

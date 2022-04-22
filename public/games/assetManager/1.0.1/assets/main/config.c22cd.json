@@ -1,0 +1,96 @@
+{
+    "paths": {},
+    "uuids": [
+        "9dq0T+8vNLi7Kxtv2cGTzg",
+        "b8OSNRvpdPAZhePn0hGPPJ",
+        "ecpdLyjvZBwrvm+cedCcQy",
+        "cbeekrK2tERZHMYnb3SW3c",
+        "bancX3RatP9b6Sl8enO4rV",
+        "c0GPA1PjJA7bli4XEgVjPQ",
+        "e7q6FL+VZEgLJUjVeDLic/",
+        "1aMvx28L1PZpgPVpKcDKCz",
+        "f0BIwQ8D5Ml7nTNQbh1YlS",
+        "e97GVMl6JHh5Ml5qEDdSGa",
+        "29FYIk+N1GYaeWH/q1NxQO",
+        "7a/zKdXVNGWYopVAO8wQSg",
+        "5cSEe6cUVByreKJqRNvahb",
+        "0aoLNsxKlM4qs77+3nCObU",
+        "e8Mstb/RhJRYtVfmIFGaJg",
+        "9dYAAftfRHJqYpJlnj3tC4",
+        "56fc2Ai/RFNYpaMT8crweK",
+        "e8Ueib+qJEhL6mXAHdnwbi",
+        "b4P/PCArtIdIH38t6mlw8Y",
+        "71VhFCTINJM6/Ky3oX9nBT",
+        "1bags8Kg5BCpWrU9yaA6Ng"
+    ],
+    "scenes": {
+        "db://assets/scenes/Main.fire": "9dq0T+8vNLi7Kxtv2cGTzg"
+    },
+    "redirect": [
+        "ecpdLyjvZBwrvm+cedCcQy",
+        0
+    ],
+    "deps": [
+        "internal"
+    ],
+    "packs": {
+        "0bd77051c": [
+            "0aoLNsxKlM4qs77+3nCObU",
+            "1aMvx28L1PZpgPVpKcDKCz",
+            "29FYIk+N1GYaeWH/q1NxQO",
+            "9dq0T+8vNLi7Kxtv2cGTzg",
+            "b8OSNRvpdPAZhePn0hGPPJ",
+            "bancX3RatP9b6Sl8enO4rV",
+            "c0GPA1PjJA7bli4XEgVjPQ",
+            "cbeekrK2tERZHMYnb3SW3c",
+            "e7q6FL+VZEgLJUjVeDLic/",
+            "e97GVMl6JHh5Ml5qEDdSGa",
+            "f0BIwQ8D5Ml7nTNQbh1YlS"
+        ],
+        "0cfc7c589": [
+            "1bags8Kg5BCpWrU9yaA6Ng",
+            "56fc2Ai/RFNYpaMT8crweK",
+            "5cSEe6cUVByreKJqRNvahb",
+            "71VhFCTINJM6/Ky3oX9nBT",
+            "7a/zKdXVNGWYopVAO8wQSg",
+            "9dYAAftfRHJqYpJlnj3tC4",
+            "b4P/PCArtIdIH38t6mlw8Y",
+            "e8Mstb/RhJRYtVfmIFGaJg",
+            "e8Ueib+qJEhL6mXAHdnwbi"
+        ]
+    },
+    "name": "main",
+    "importBase": "import",
+    "nativeBase": "native",
+    "debug": true,
+    "isZip": false,
+    "encrypted": false,
+    "versions": {
+        "import": [
+            "0bd77051c",
+            "0053a",
+            "0cfc7c589",
+            "05252"
+        ],
+        "native": [
+            "1bags8Kg5BCpWrU9yaA6Ng",
+            "89272",
+            "56fc2Ai/RFNYpaMT8crweK",
+            "5f1d9",
+            "5cSEe6cUVByreKJqRNvahb",
+            "f6a1e",
+            "71VhFCTINJM6/Ky3oX9nBT",
+            "c06a9",
+            "7a/zKdXVNGWYopVAO8wQSg",
+            "d807f",
+            "9dYAAftfRHJqYpJlnj3tC4",
+            "e0234",
+            "b4P/PCArtIdIH38t6mlw8Y",
+            "83fcc",
+            "e8Mstb/RhJRYtVfmIFGaJg",
+            "333c5",
+            "e8Ueib+qJEhL6mXAHdnwbi",
+            "90cf4"
+        ]
+    }
+}

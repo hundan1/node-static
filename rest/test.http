@@ -1,0 +1,13 @@
+# test
+@host = http://192.168.164.52:5151
+# @host = http://127.0.0.0:5151
+
+### 获取版本信息
+# test
+POST {{host}}/api/test/add?a=1&b=2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "c": "3",
+    "d": 4
+}

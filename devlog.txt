@@ -1,3 +1,14 @@
+20220422
+    游戏接口
+        获取游戏最新版本信息支持脚本加密
+
+20220421
+    使用全局变量
+    使用rest client
+    接口分层
+    游戏接口
+        添加新的请求游戏版本接口，（可以获取AB包的hash值）
+
 20220416
     动态调整manifest时，可校验上一次ip和port,也可不校验强制更改(config.forceAdjust) 
     添加npm指令 dev ,设置忽略列表，防止动态写入文件致使nodemon一直重新启动 https://nibes.cn/blog/27780

@@ -11,16 +11,19 @@ const $path = require('path');
 
 let files = $fs.readdirSync(__dirname);
 console.log("\nimport routes files start...");
-files.forEach(function (file, i) {
-  if (!''.startsWith(file, '.') && file !== 'index.js' && file !== 'apidoc.json') {
-    try {
-      console.log(i, file);
-      // router.use('/' + file.replace('.js', ''), require('./' + file).router.routes());
-      router.use('/' + file.replace('.js', ''), require('./' + file));
-    } catch (ex) {
-      console.error('路由加载错误[' + $path.join(__dirname, file) + ']：' + ex.stack);
+
+let apisFilesCount = 0;
+files.forEach(function (file) {
+    if (!''.startsWith(file, '.') && file !== 'index.js' && file !== 'apidoc.json') {
+        try {
+            apisFilesCount++;
+            console.log(apisFilesCount, file);
+            // router.use('/' + file.replace('.js', ''), require('./' + file).router.routes());
+            router.use('/' + file.replace('.js', ''), require('./' + file));
+        } catch (ex) {
+            console.error('路由加载错误[' + $path.join(__dirname, file) + ']：' + ex.stack);
+        }
     }
-  }
 });
 console.log("import routes files end...\n");
 

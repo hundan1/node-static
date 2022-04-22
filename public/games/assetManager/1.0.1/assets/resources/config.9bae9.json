@@ -1,0 +1,31 @@
+{
+    "paths": {
+        "fe+OjPzA5KzLFUYshyJHO0": [
+            "audios/music_logo",
+            "cc.AudioClip"
+        ]
+    },
+    "uuids": [
+        "fe+OjPzA5KzLFUYshyJHO0"
+    ],
+    "scenes": {},
+    "redirect": [],
+    "deps": [],
+    "packs": {},
+    "name": "resources",
+    "importBase": "import",
+    "nativeBase": "native",
+    "debug": true,
+    "isZip": false,
+    "encrypted": false,
+    "versions": {
+        "import": [
+            "fe+OjPzA5KzLFUYshyJHO0",
+            "8023e"
+        ],
+        "native": [
+            "fe+OjPzA5KzLFUYshyJHO0",
+            "d580e"
+        ]
+    }
+}

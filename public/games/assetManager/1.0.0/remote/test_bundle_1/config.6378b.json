@@ -1,0 +1,99 @@
+{
+    "paths": {
+        "2dNbBZE+lAboFNcCMZz8aZ": [
+            "gold",
+            "cc.Texture2D"
+        ],
+        "30EcUIPg5ATb3IOQAZKt1D": [
+            "gold",
+            "cc.SpriteFrame",
+            1
+        ],
+        "64p1e3QNFEHppCBCZBPVa2": [
+            "gold_new",
+            "cc.Texture2D"
+        ],
+        "39vf7EAE9F95STVyx/19bB": [
+            "gold_new",
+            "cc.SpriteFrame",
+            1
+        ],
+        "214ihJcwhD/4fu8lMBl5p5": [
+            "ss",
+            "cc.AudioClip"
+        ],
+        "08kuYfGYFLPYsky+S+8kWP": [
+            "ss_new",
+            "cc.AudioClip"
+        ],
+        "aaauXdqbtGB78Y0AuFN78K": [
+            "star",
+            "cc.Texture2D"
+        ],
+        "87cwfyHLNJ1okY6vTlcpYN": [
+            "star",
+            "cc.SpriteFrame",
+            1
+        ]
+    },
+    "uuids": [
+        "d0PtE+ewBFs4K3l94/tHjc",
+        "64p1e3QNFEHppCBCZBPVa2",
+        "39vf7EAE9F95STVyx/19bB",
+        "2dNbBZE+lAboFNcCMZz8aZ",
+        "30EcUIPg5ATb3IOQAZKt1D",
+        "08kuYfGYFLPYsky+S+8kWP",
+        "214ihJcwhD/4fu8lMBl5p5",
+        "aaauXdqbtGB78Y0AuFN78K",
+        "87cwfyHLNJ1okY6vTlcpYN",
+        "ecpdLyjvZBwrvm+cedCcQy",
+        "0aoLNsxKlM4qs77+3nCObU",
+        "3c5d3JLn5CH5FiVldIndJp",
+        "f0BIwQ8D5Ml7nTNQbh1YlS",
+        "e97GVMl6JHh5Ml5qEDdSGa",
+        "29FYIk+N1GYaeWH/q1NxQO",
+        "fe+OjPzA5KzLFUYshyJHO0",
+        "baxhYqp89AdIJFDAtyoqMX"
+    ],
+    "scenes": {
+        "db://assets/res/test_bundle_1/sub-scene.fire": "d0PtE+ewBFs4K3l94/tHjc"
+    },
+    "redirect": [
+        "ecpdLyjvZBwrvm+cedCcQy",
+        0,
+        "0aoLNsxKlM4qs77+3nCObU",
+        1,
+        "f0BIwQ8D5Ml7nTNQbh1YlS",
+        1,
+        "e97GVMl6JHh5Ml5qEDdSGa",
+        1,
+        "29FYIk+N1GYaeWH/q1NxQO",
+        1,
+        "fe+OjPzA5KzLFUYshyJHO0",
+        2
+    ],
+    "deps": [
+        "internal",
+        "main",
+        "resources"
+    ],
+    "packs": {
+        "04ee1ad94": [
+            "3c5d3JLn5CH5FiVldIndJp",
+            "d0PtE+ewBFs4K3l94/tHjc"
+        ],
+        "09f7c6435": [
+            "2dNbBZE+lAboFNcCMZz8aZ",
+            "64p1e3QNFEHppCBCZBPVa2",
+            "aaauXdqbtGB78Y0AuFN78K",
+            "baxhYqp89AdIJFDAtyoqMX"
+        ]
+    },
+    "name": "test_bundle_1",
+    "importBase": "import",
+    "nativeBase": "native",
+    "debug": true,
+    "isZip": true,
+    "encrypted": false,
+    "zipVersion": "15970"
+}

@@ -1,0 +1,8 @@
+# 游戏
+@host = http://192.168.160.52:5151
+# @host = http://127.0.0.0:5151
+
+### 获取版本信息
+# assetManager
+GET {{host}}/api/game/version?name=tests&bundleName=test_bundle_1 HTTP/1.1
+# GET {{host}}/api/game/version?_t=1650525385067&name=assetManager&bundleName=test_bundle_1 HTTP/1.1
