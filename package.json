@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest && node --max_old_space_size=8192",
     "dev": "nodemon ./index.js --ignore records/ --ignore public/games/ --ignore public/remote-assets/ --ignore rest/"
   },
   "keywords": [],
@@ -15,6 +15,12 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "moment": "^2.29.3",
-    "nodejs-websocket": "^1.7.2"
+    "nodejs-websocket": "^1.7.2",
+    "socket.io": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "@types/socket.io": "^3.0.2",
+    "jest": "^27.5.1"
   }
 }

@@ -4,7 +4,7 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 const routes = require("./routes/index");
 
-global.$app = new Express();
+$app = new Express();
 global.$moment = require("moment");
 global.$ErrorCode = require('./utils/error');
 global.$Regexs = require("./utils/regexs");
@@ -29,13 +29,14 @@ $moment.locale();         // zh-cn
 //     urlStr += (":" + $conf.port);// 80端口浏览器访问可省写端口
 // }
 const urlStr = $conf.url;
-$app.listen($conf.port, $conf.ip, () => {
+const server = $app.listen($conf.port, $conf.ip, () => {
     // let url = "http://" + $conf._ip + ":" + $conf.port;
     $logger.log("service is run at \t\t" + urlStr);
-    $logger.log("you can try load file1:\t\t" + urlStr + "/test.txt");
-    $logger.log("you can try load file2:\t\t" + urlStr + "/videos/原神MMD.mp4");
-    $logger.log("you can try request[get]:\t" + urlStr + "/api/test?a=1&b=2");
-    $logger.log("you can try request[post]:\t" + urlStr + "/api/test/add", " {\"a\": 1, \"b\": 2}");
+    $logger.log("you can try to load file1:\t" + urlStr + "/test.txt");
+    $logger.log("you can try to load file2:\t" + urlStr + "/images/fun_dog.jpg");
+    $logger.log("you can try to load file3:\t" + urlStr + "/videos/原神MMD.mp4");
+    $logger.log("you can try to request[get]:\t" + urlStr + "/api/test?a=1&b=2");
+    $logger.log("you can try to request[post]:\t" + urlStr + "/api/test/add", " {\"a\": 1, \"b\": 2}");
 });
 
 // 允许跨域
@@ -44,7 +45,13 @@ $app.all('*', (req, res, next) => {
     // $logger.log(req);
     // res.headers['Access-Control-Allow-Origin'] = req.environ['HTTP_ORIGIN'];// 设置动态的origin
     res.header('Access-Control-Allow-Origin', req.headers['origin']);// 设置动态的origin
+    // res.header('Access-Control-Allow-Origin', "*");// socket.io跨域
+    // The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'. The credentials mode of requests initiated by the XMLHttpRequest is controlled by the withCredentials attribute.
+
+
     res.header("Access-Control-Allow-Credentials", true);// The value of the 'Access-Control-Allow-Credentials' header in the response is '' which must be 'true' when the request's credentials mode is 'include'.
+
+    
 
 
     res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type,application/json");
@@ -125,6 +132,7 @@ $app.all('*', (req, res, next) => {
 
 
 // websocket server
+/**
 let wss = require("nodejs-websocket");
 // 执行websocket处理连接方法
 wss.createServer(connection => {
@@ -144,6 +152,34 @@ wss.createServer(connection => {
         })
     })
 }).listen(3000);
+ */
 
+// websocket 部分浏览器可能没用， socket.io对其再做封装，可兼容
+const io = require('socket.io')(server, {cors: true});
+
+io.on('connection', socket => {
+    // console.log("有客户端链接了", socket);
+    console.log("有客户端链接了");
+    socket.on('message', (data) => {
+        console.log("客户端传来的信息", data);
+        socket.emit('message', "你好");
+    });
+    socket.on('disconnect', () => { /* … */ });
+});
+
+// 客户端要使用 socket.io-client 
+// npm i -S socket.io-client 
+// import { io } from "socket.io-client";
+// let socket = io.connect(urlStr); // http://192.168.108.52:5151
+// socket.on("connect", (data) => {
+//     console.log("链接成功")
+//     socket.emit("message", "hello");
+//     socket.on("message", (data) => {
+//         console.log(data);
+//     });
+// });
+// socket.on("disconnect", (data) => {
+//     console.log("链接断开");
+// });
 
 
